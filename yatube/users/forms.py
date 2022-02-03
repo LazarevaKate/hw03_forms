@@ -1,16 +1,13 @@
 from django import forms
 
-from django.contrib.auth import get_user_model
-
 from django.contrib.auth.forms import UserCreationForm
+
+from django.contrib.auth import get_user_model
 
 from django.forms import Textarea, Select
 
-from django.forms import ModelForm
+from posts.models import Post, Contact
 
-from posts.models import Post
-
-from hw03_forms.yatube.posts.models import Contact
 
 User = get_user_model()
 
