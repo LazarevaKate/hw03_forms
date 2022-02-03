@@ -4,9 +4,12 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 from django.core.paginator import Paginator
 
-from users.forms import User, CreatePost, ContactForm, PostForm
+from users.forms import User, ContactForm
+
+from .forms import PostForm, CreatePost
 
 from .models import Post, Group, Contact, User
+
 
 POST_COUNT = 10
 
@@ -18,7 +21,6 @@ def index(request):
     page_obj = paginator.get_page(page_number)
     context = {
         'text': 'Это главная страница проекта Yatube',
-        'posts': posts,
         'page_obj': page_obj
     }
     return render(request, 'posts/index.html', context)
@@ -27,11 +29,14 @@ def index(request):
 def group_posts(request, slug):
     """Здесь будет информация о группах проекта Yatube."""
     group = get_object_or_404(Group, slug=slug)
-    posts = group.posts.all()[:POST_COUNT]
+    posts = group.posts.all()
+    paginator = Paginator(posts, POST_COUNT)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     context = {
         'text': 'Здесь будет информация о группах проекта Yatube',
         'group': group,
-        'posts': posts
+        'page_obj': page_obj
     }
     return render(request, 'posts/group_list.html', context)
 

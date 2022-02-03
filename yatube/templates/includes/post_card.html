@@ -10,10 +10,4 @@
   <p>
     {{ post.text }}
   </p>
-  <ul>
-    <a href="{% url 'posts:post_detail' post.pk %}">подробная информация </a>
-  </ul>
-  <ul>
-  <a href="{% url 'posts:profile' post.author %}">все посты пользователя</a>
-  </ul>
 </article>
