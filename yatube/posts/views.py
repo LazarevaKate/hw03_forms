@@ -5,7 +5,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator
 
 from .models import Post, Group, Contact, User
+
 from ..users.forms import CreatePost, ContactForm
+
 from ..users.views import PostForm
 
 POST_COUNT = 10
