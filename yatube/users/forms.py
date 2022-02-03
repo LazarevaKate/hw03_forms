@@ -1,5 +1,3 @@
-from django import forms
-
 from django.contrib.auth.forms import UserCreationForm
 
 from django.contrib.auth import get_user_model
@@ -8,6 +6,7 @@ from django.forms import Textarea, Select
 
 from posts.models import Post, Contact
 
+from django import forms
 
 User = get_user_model()
 
