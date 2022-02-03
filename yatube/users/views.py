@@ -10,11 +10,11 @@ from django.views.generic import CreateView
 
 from django.urls import reverse_lazy
 
-from posts.models import Post
-
 from . import forms
 
 from .forms import CreationForm
+
+from ..posts.models import Post
 
 
 class SignUp(CreateView):
