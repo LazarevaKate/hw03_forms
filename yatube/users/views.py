@@ -1,6 +1,7 @@
 from django.contrib.auth import logout, login
 
-from django.contrib.auth.forms import PasswordChangeForm, PasswordResetForm, AuthenticationForm
+from django.contrib.auth.forms import PasswordResetForm, \
+    AuthenticationForm
 
 from django.contrib.auth.views import LoginView
 
@@ -32,7 +33,6 @@ class LoginUser(LoginView):
     form_class = AuthenticationForm
     success_url = reverse_lazy('posts:index')
     template_name = 'users/login.html'
-
 
 
 class ResetChange():
