@@ -1,4 +1,4 @@
-from django.contrib.auth import logout, login
+from django.contrib.auth import login
 
 from django.contrib.auth.forms import PasswordResetForm, \
     AuthenticationForm
@@ -35,4 +35,3 @@ class ResetChange():
     form_class = PasswordResetForm
     success_url = reverse_lazy('users:password_reset_confirm')
     template_name = 'users/password_reset_form.html'
-
