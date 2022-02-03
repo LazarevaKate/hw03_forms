@@ -11,10 +11,6 @@ from django.views.generic import CreateView
 
 from django.urls import reverse_lazy
 
-from posts.models import Post
-
-from django import forms
-
 from .forms import CreationForm
 
 
@@ -46,7 +42,4 @@ def logout_user(request):
     return redirect('login')
 
 
-class PostForm(forms.ModelForm):
-    class Meta:
-        model = Post
-        fields = ('text', 'group')
+

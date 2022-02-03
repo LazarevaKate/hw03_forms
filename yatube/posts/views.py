@@ -6,10 +6,7 @@ from django.core.paginator import Paginator
 
 from users.forms import User, CreatePost, ContactForm
 
-from users.views import PostForm
-
-from .models import Post, Group, Contact, User
-
+from .models import Post, Group, Contact, User, PostForm
 
 POST_COUNT = 10
 

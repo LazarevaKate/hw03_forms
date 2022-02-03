@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.shortcuts import reverse
 
+from django import forms
+
 
 User = get_user_model()
 
@@ -51,3 +53,9 @@ class Contact(models.Model):
     subject = models.CharField(max_length=100)
     body = models.TextField()
     is_answered = models.BooleanField(default=False)
+
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ('text', 'group')
