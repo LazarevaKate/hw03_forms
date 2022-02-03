@@ -10,6 +10,7 @@ from ..users.forms import CreatePost, ContactForm
 
 from ..users.views import PostForm
 
+
 POST_COUNT = 10
 
 

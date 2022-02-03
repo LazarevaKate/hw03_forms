@@ -6,8 +6,9 @@ from django.contrib.auth import get_user_model
 
 from django.forms import Textarea, Select
 
-from posts.models import Post, Contact
+from posts.models import Post
 
+from hw03_forms.yatube.posts.models import Contact
 
 User = get_user_model()
 
