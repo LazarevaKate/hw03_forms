@@ -53,9 +53,3 @@ class Contact(models.Model):
     subject = models.CharField(max_length=100)
     body = models.TextField()
     is_answered = models.BooleanField(default=False)
-
-
-class PostForm(forms.ModelForm):
-    class Meta:
-        model = Post
-        fields = ('text', 'group')

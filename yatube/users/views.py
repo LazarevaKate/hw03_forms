@@ -36,7 +36,3 @@ class ResetChange():
     success_url = reverse_lazy('users:password_reset_confirm')
     template_name = 'users/password_reset_form.html'
 
-
-def logout_user(request):
-    logout(request)
-    return redirect('login')

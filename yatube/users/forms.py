@@ -41,3 +41,9 @@ class CreatePost(forms.ModelForm):
         if data == '':
             raise forms.ValidationError('Вставьте текст')
         return data
+
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ('text', 'group')
