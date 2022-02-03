@@ -34,7 +34,6 @@ class LoginUser(LoginView):
     template_name = 'users/login.html'
 
 
-
 class ResetChange():
     form_class = PasswordResetForm
     success_url = reverse_lazy('users:password_reset_confirm')
