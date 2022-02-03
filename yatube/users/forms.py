@@ -2,8 +2,6 @@ from django.contrib.auth.forms import UserCreationForm
 
 from django.contrib.auth import get_user_model
 
-from django.forms import Textarea, Select
-
 from posts.models import Contact
 
 from django import forms
