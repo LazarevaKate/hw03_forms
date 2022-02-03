@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %} {{title}} {% endblock %}
+{% block content %}
+  <h1>{{ text }}</h1>
+
+  {% for post in posts %}
+    {% include 'includes/post_card.html' %}
+    {% if post.group %}
+      <a href=" {{ post.group.get_absolute_url }} ">Все записи группы {{ post.group }}</a>
+    {% endif %}
+    {% if not forloop.last %}<hr>{% endif %}
+  {% endfor %}
+{% endblock %}
