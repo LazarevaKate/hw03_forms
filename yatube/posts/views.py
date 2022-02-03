@@ -89,7 +89,7 @@ def post_create(request):
             form.save()
             return redirect('posts:profile', request.user)
     form = CreatePost()
-    return render(request, 'posts/posts_create.html', {'form': form})
+    return render(request, 'posts/post_create.html', {'form': form})
 
 
 @login_required
@@ -104,7 +104,7 @@ def post_edit(request, post_id):
             'form': form,
             'posts': posts
         }
-        return render(request, 'posts/posts_create.html', context)
+        return render(request, 'posts/post_create.html', context)
 
     form = PostForm(request.POST or None, instance=posts)
     if form.is_valid():
