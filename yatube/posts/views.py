@@ -53,10 +53,9 @@ def profile(request, username):
     paginator = Paginator(posts, POST_COUNT)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    title = f'Все посты пользователя {username}'
     post_count = author.posts.count()
     context = {
-        'title': title,
+        'author': author,
         'page_obj': page_obj,
         'page_number': page_number,
         'post_count': post_count
