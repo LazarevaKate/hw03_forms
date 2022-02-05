@@ -1,5 +1,5 @@
 from django.contrib.auth.views import (
-    LoginView, LogoutView,PasswordChangeDoneView,
+    LoginView, LogoutView, PasswordChangeDoneView,
     PasswordResetDoneView, PasswordResetConfirmView,
     PasswordResetView,
     PasswordResetCompleteView, PasswordChangeView
