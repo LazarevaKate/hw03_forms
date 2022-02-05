@@ -1,14 +1,10 @@
 from django.contrib.auth.decorators import login_required
-
 from django.shortcuts import render, get_object_or_404, redirect
-
 from django.core.paginator import Paginator
 
-from users.forms import User, ContactForm
-
-from .forms import PostForm, CreatePost
-
-from .models import Post, Group, Contact, User
+from users.forms import User
+from .forms import CreatePost
+from .models import Post, Group, User
 
 
 POST_COUNT = 10
@@ -39,12 +35,6 @@ def group_posts(request, slug):
         'page_obj': page_obj
     }
     return render(request, 'posts/group_list.html', context)
-
-
-def user_contact(request):
-    contact = Contact.objects.get(pk=3)
-    form = ContactForm(instance=contact)
-    return render(request, 'users/contact.html', {'form': form})
 
 
 def profile(request, username):
@@ -80,32 +70,28 @@ def post_detail(request, post_id):
 
 @login_required
 def post_create(request):
-    if request.method == 'POST':
-        form = CreatePost(request.POST)
-        if form.is_valid():
-            form = form.save(commit=False)
-            form.author = request.user
-            form.save()
-            return redirect('posts:profile', request.user)
-    form = CreatePost()
+    form = CreatePost(request.POST or None)
+    if form.is_valid():
+        post = form.save(commit=False)
+        post.author = request.user
+        post.save()
+        return redirect('posts:profile', request.user)
     return render(request, 'posts/post_create.html', {'form': form})
 
 
 @login_required
 def post_edit(request, post_id):
     posts = get_object_or_404(Post, id=post_id)
-
-    if request.method == 'GET':
-        if not posts.author == request.user:
-            return redirect('posts:post_detail', post_id)
-        form = PostForm(instance=posts)
-        context = {
-            'form': form,
-            'posts': posts
-        }
-        return render(request, 'posts/post_create.html', context)
-
-    form = PostForm(request.POST or None, instance=posts)
+    is_edit = True
+    if posts.author != request.user:
+        return redirect('posts:post_detail', post_id)
+    form = CreatePost(request.POST or None, instance=posts)
+    context = {
+        'form': form,
+        'posts': posts,
+        'is_edit': is_edit
+    }
     if form.is_valid():
         form.save()
-    return redirect('posts:post_detail', post_id)
+        return redirect('posts:post_detail', post_id)
+    return render(request, 'posts/post_create.html', context)
