@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from posts.models import Post
 
 
-class CreatePost(forms.ModelForm):
+class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('text', 'group')

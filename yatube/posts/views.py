@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator
 
 from users.forms import User
-from .forms import CreatePost
+from .forms import PostForm
 from .models import Post, Group, User
 
 
@@ -70,7 +70,7 @@ def post_detail(request, post_id):
 
 @login_required
 def post_create(request):
-    form = CreatePost(request.POST or None)
+    form = PostForm(request.POST or None)
     if form.is_valid():
         post = form.save(commit=False)
         post.author = request.user
@@ -85,7 +85,7 @@ def post_edit(request, post_id):
     is_edit = True
     if posts.author != request.user:
         return redirect('posts:post_detail', post_id)
-    form = CreatePost(request.POST or None, instance=posts)
+    form = PostForm(request.POST or None, instance=posts)
     context = {
         'form': form,
         'posts': posts,
