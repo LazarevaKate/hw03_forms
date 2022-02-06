@@ -17,6 +17,6 @@ class PostForm(forms.ModelForm):
         },
         error_messages = {
             'text': {
-                'empty_labels': _('Незабудь заполнить поле'),
+                'empty_labels': _('Не забудь заполнить поле'),
             },
         }
