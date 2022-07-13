@@ -1,12 +1,22 @@
 # Вackend_Сommunity_Homework
 
-Добавлены forms.py для Yatube. 
+Добавлены формы для создания новых записий и их радктирования для Yatube. 
 
-Проект написан на Python 3.7 и Django 2.2.19
+Стек: Python 3.7, Django 2.2.19, SQLite
 
-Чтобы запустить проект: 
-
-- Установите и активируйте виртуальное окружение
+# Чтобы запустить проект: 
+- Клонируйте репозиторий:
+```
+git clone git@github.com:LazarevaKate/hw03_forms.git
+``` 
+- Перейдите в папку с проектом:
+```
+cd hw03_forms
+``` 
+- Установите и активируйте виртуальное окружение:
+```
+python -m venv venv
+```
 - Установите зависимости из файла requirements.txt
 ```
 pip install -r requirements.txt
@@ -15,3 +25,6 @@ pip install -r requirements.txt
 ```
 python3 manage.py runserver
 ``` 
+
+Автор Лазарева Екатерина
+
